@@ -41,7 +41,9 @@ def show_table_names(tables):
 
 def option1 (db_object, tables):
     """
-    :param db_object:
+    Search option
+    :param db_object: database object
+    :param tables: the name of the tables in the database
     :return: VOID
     """
     # shows that tables names in menu
@@ -78,7 +80,9 @@ def option1 (db_object, tables):
         print("The data couldn't be entered\n")
 def option2 (db_object, tables):
     """
-    :param db_object:
+    Search option
+    :param db_object: database object
+    :param tables: the name of the tables in the database
     :return: VOID
     """
     # shows that tables names in menu
@@ -196,6 +200,12 @@ def option3(db_object, tables):
 
 
 # option 4 when user selects insert
+"""
+    Search option
+    :param db_object: database object
+    :param tables: the name of the tables in the database
+    :return: VOID
+    """
 def option4(db_object, tables):
     try:
         # show tables names
@@ -221,6 +231,12 @@ def option4(db_object, tables):
         print("Data couldn't to be inserted in ", table, "\n")
 
 def option5(db_object,tables): #allows user to probably update data entries
+    """
+    Search option
+    :param db_object: database object
+    :param tables: the name of the tables in the database
+    :return: VOID
+    """
     try:
         show_table_names(tables)
 
@@ -318,124 +334,3 @@ while option != 7:
         option6(db, tables)
     show_menu()
     option = int(input("Select one option from the menu: "))
-
-# Example output for insert and search
-
-"""
-Setting up the database......
-
-Created database ArtGalleryManagementDB
-8 Executed queries from databasemodel.sql
-29 Executed queries from insert.sql
-
-Set up process finished
-
-User Menu 
-1. Create Account 
-2. Login 
-3. Search 
-4. Insert 
-5. Update 
-6. Delete 
-7. Exit 
-
-Select one option from the menu: 4
-
-Tables:
-Album
-Artist
-Genre
-Track
-
-Enter a table to insert data: artist
-Enter the name attribute/s separated by comma? id, name
-Enter the values separated by comma: 7, Nina
-Data successfully inserted into artist 
-
-User Menu 
-1. Create Account 
-2. Login 
-3. Search 
-4. Insert 
-5. Update 
-6. Delete 
-7. Exit 
-
-Select one option from the menu: 4
-
-Tables:
-Album
-Artist
-Genre
-Track
-
-Enter a table to insert data: genre
-Enter the name attribute/s separated by comma? description
-Enter the values separated by comma: Hip Hop
-Data successfully inserted into genre 
-
-User Menu 
-1. Create Account 
-2. Login 
-3. Search 
-4. Insert 
-5. Update 
-6. Delete 
-7. Exit 
-
-Select one option from the menu: 3
-
-Tables:
-Album
-Artist
-Genre
-Track
-
-Select a table to search: artist
-Search by (i.e name)? name
-Enter the value: Nina
-
-
-Results from: artist
-id: [7]
-name: ['Nina']
-
-
-User Menu 
-1. Create Account 
-2. Login 
-3. Search 
-4. Insert 
-5. Update 
-6. Delete 
-7. Exit 
-
-Select one option from the menu: 3
-
-Tables:
-Album
-Artist
-Genre
-Track
-
-Select a table to search: genre
-Search by (i.e name)? description
-Enter the value: Hip Hop
-
-
-Results from: genre
-id: [6]
-description: ['Hip Hop']
-
-
-User Menu 
-1. Create Account 
-2. Login 
-3. Search 
-4. Insert 
-5. Update 
-6. Delete 
-7. Exit 
-
-Select one option from the menu: 
-"""

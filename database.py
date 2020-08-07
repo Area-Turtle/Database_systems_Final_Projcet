@@ -189,7 +189,9 @@ class DB:
 
     def create_table(self, query, values=None):
         return self._execute_query(query, values, action=self.CREATE_TABLE)
-
+    """
+    allows for inserts into database
+    """
     def insert(self, query=None, table=None, attributes=None, values=None):
         if not query:
             wildcards = self.wildcars(len(values))
@@ -198,7 +200,9 @@ class DB:
             values = [x.strip(' ') for x in values]
             values = tuple(values)
         return self._execute_query(query, values, action=self.INSERT)
-
+    """
+    allows for updates into database
+    """
     def update(self, query = None,table = None, attribute=None, values=None):
         if not query:
             wildcards = self.wildcars(len(values))
@@ -207,13 +211,17 @@ class DB:
             values = [x.strip(' ') for x in values]
             values = tuple(values)
         return self._execute_query(query, values, action=self.UPDATE)
-
+    """
+    allows for delete into database
+    """
     def delete(self, query = None,table = None, attribute=None):
         if not query:
             attributes_to_str = ", ".join(attributes)
             query = """DELETE FROM {} WHERE ( {} )""".format(table, attributes_to_str)
         return self._execute_query(query, action=self.DELETE)
-
+    """
+    allows for select into database
+    """
     def select(self, query, values=None):
         rows = self._execute_query(query, values, action=self.SELECT)
         return rows
