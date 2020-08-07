@@ -22,8 +22,6 @@ CREATE SCHEMA IF NOT EXISTS `ArtGalleryManagementDB` DEFAULT CHARACTER SET utf8 
 SHOW WARNINGS;
 USE `ArtGalleryManagementDB` ;
 
-
-
 -- Drop all table data if exists --
 DROP TABLE IF EXISTS Administrator;
 DROP TABLE IF EXISTS ArtistType;
@@ -51,6 +49,7 @@ DROP TABLE IF EXISTS SocialMedia;
 DROP TABLE IF EXISTS TempUser;
 DROP TABLE IF EXISTS ToBuy;
 DROP TABLE IF EXISTS WebSite;
+
 
 -- -----------------------------------------------------
 -- Table `ArtGalleryManagementDB`.`Exhibition`
@@ -221,16 +220,16 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ArtGalleryManagementDB`.`RegisteredUsers` (
   `RegisterUser_ID` INT NOT NULL AUTO_INCREMENT,
-  `Company` VARCHAR(45) NOT NULL,
-  `Gender` VARCHAR(45) NOT NULL,
-  `FirstName` VARCHAR(45) NOT NULL,
-  `LastName` VARCHAR(45) NOT NULL,
-  `Email` VARCHAR(45) NOT NULL,
-  `UserName` VARCHAR(45) NOT NULL,
-  `Password` VARCHAR(45) NOT NULL,
   `Address` VARCHAR(45) NOT NULL,
   `City` VARCHAR(45) NOT NULL,
+  `Company` VARCHAR(45) NOT NULL,
   `Country` VARCHAR(45) NOT NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `FirstName` VARCHAR(45) NOT NULL,
+  `Gender` VARCHAR(45) NOT NULL,
+  `LastName` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(45) NOT NULL,
+  `UserName` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`RegisterUser_ID`),
   UNIQUE INDEX `RegistedUser_ID_UNIQUE` (`RegisterUser_ID` ASC) VISIBLE,
   UNIQUE INDEX `UserName_UNIQUE` (`UserName` ASC) VISIBLE,

@@ -70,11 +70,11 @@ VALUES
 (3,'1');
 
 INSERT INTO `ArtGalleryManagementDB`.`RegisteredUsers`
-(`Company`,`Gender`,`FirstName`,`LastName`,`Email`,`UserName`,`Password`,`Address`,`City`,`Country`)
+(`Address`,`City`,`Company`,`Country`,`Email`,`FirstName`,`Gender`,`LastName`,`Password`,`UserName`)
 VALUES
-('Fake Company1','Plane','Joe','Doe','email','use','pass','123 add','not','aplace'),
-('Fake Company2','Plane','Joe1','Doe','email2','use2','pass2','124 add','not','aplace'),
-('Fake Company3','Plane','Joe2','Doe','email3','use3','pass3','125 add','not','aplace');
+('123 add','city','Fake Company1','aplace','Email','Joe','Plane','Doe','pass','not'),
+('124 add','city','Fake Company2','aplace','Email2','Joe1','Plane','Doe','pass2','not2'),
+('125 add','city','Fake Company3','aplace','Email3','Joe2','Plane','Doe','pass3','not3');
 
 INSERT INTO `ArtGalleryManagementDB`.`WebSite`
 (`WebSite_ID`,`Exhibition_ID`,`Misc_Exhibtion_Data`)

@@ -50,18 +50,26 @@ def option1 (db_object, tables):
     # get user input
     try:
         table = "RegisteredUsers"
-        Company = input("\nCompany: ")
-        Gender = input("Gender: ")
-        FirstName = input("First Name:  ")
-        LastName = input("Last Name: ")
-        Email = input("Email: ")
-        UserName = input("User Name: ")
-        Password = input("Password: ")
         Address = input("Address:  ")
         City = input("City: ")
-        Country = input("Country: ")
+        Company = input("Company: ")
+        Country = input("Country:")
+        Email = input("Email: ")
+        FirstName = input("First Name:  ")
+        Gender = input("Gender: ")
+        LastName = input("Last Name: ")
+        Password = input("Password: ")
+        UserName = input("User Name: ")
 
         columns = db_object.get_column_names(table)
+        print("Results from: " + table)
+        for column in columns:
+            values = []
+            for result in results:
+                values.append(result[column_index])
+            print("{}: {}".format(column[0], values) ) # print attribute: value
+            column_index+= 1
+        print("\n")
         print("Data successfully inserted into {} \n".format(table))
 
         print("Account created\n Welcome New User")
@@ -78,22 +86,70 @@ def option2 (db_object, tables):
 
     # get user input
     try:
-        email_input = input("\nEmail: ")
-        password_input= input("Password: ")
+        # shows that tables names in menu
+        #show_table_names(tables)
 
-        table = "RegisteredUsers"
-        columns = db_object.get_column_names(table)
-        query = """SELECT * FROM {} WHERE {} = %s""".format(table, email)
+        # get user input
+        table_selected = "RegisteredUsers"
+        attribute_selected = "Email"
+        value_selected = "Email"
+        Entered_Email= input("EnterEmail: ")
+
+        attribute_selected2 = "Password"
+        value_selected2 = "pass"
+        Entered_Password = input("Enter Password: ")
+
+        columns = db_object.get_column_names(table_selected)  # get columns names for the table selected
+
+        # build queries with the user input
+        query = """SELECT * FROM {} WHERE {} = %s""".format(table_selected, attribute_selected)
+        query2 = """SELECT * FROM {} WHERE {} = %s""".format(table_selected, value_selected)
+        query3 = """SELECT * FROM {} WHERE {} = %s""".format(table_selected, Entered_Email)
+
+
+        query4 = """SELECT * FROM {} WHERE {} = %s""".format(table_selected, attribute_selected2)
+        query5 = """SELECT * FROM {} WHERE {} = %s""".format(table_selected, value_selected2)
+        query6 = """SELECT * FROM {} WHERE {} = %s""".format(table_selected, Entered_Password)
+
+        """
         print(query)
+        print(query2)
+        print(query3)
+        print(query4)
+        print(query5)
+        print(query6)
+        """
+
+        if query == query3:
+            if query5 == query6:
+                print("Data Match (Email)")
+                print("Data Match (Password)")
+                query = """SELECT * FROM {} WHERE {} = %s""".format(table_selected, value_selected)
+                print("\nWelcome User")
+        value = value_selected
 
 
+        # get the results from the above query
+        results = db_object.select(query=query, values=value)
+        column_index = 0
 
 
-
-
+        # print results
+        #print("\n")
+        #print("Results from: " + table_selected)
+        for column in columns:
+            values = []
+            for result in results:
+                values.append(result[column_index])
+                if result == "Username":
+                    print("Test")
+                #print("{}:{}".format(column[0],values))
+                #print("{}: {}".format(column[0], values) ) # print attribute: value
+            column_index+= 1
+        print("\n")
 
     except Exception as err:  # handle error
-        print("The data entry couldn't be found\n")
+        print("User Entered Incorret Data, User Couldn't be logged in.\n")
 
 def option3(db_object, tables):
     """
@@ -115,7 +171,7 @@ def option3(db_object, tables):
 
         # build queries with the user input
         query = """SELECT * FROM {} WHERE {} = %s""".format(table_selected, attribute_selected)
-
+        print(query)
         value = value_selected
 
         # get the results from the above query
@@ -125,6 +181,7 @@ def option3(db_object, tables):
         # print results
         print("\n")
         print("Results from: " + table_selected)
+
         for column in columns:
             values = []
             for result in results:
@@ -223,7 +280,7 @@ def option6(db_object,tables): #allows user to probably delete data entries
 from database import DB
 
 print("Setting up the database......\n")
-
+print("Checking Database.....\n")
 # DB API object
 db = DB(config_file="sqlconfig.conf")
 
@@ -236,6 +293,7 @@ else:
 
 # create all the tables from databasemodel.sql
 db.run_sql_file("databasemodel.sql")
+#db.run_sql_file("transactions.sql")
 
 # insert sample data from insert.sql
 db.run_sql_file("insert.sql")
